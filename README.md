@@ -55,13 +55,15 @@ endmodule
 */
 
 **RTL LOGIC FOR 4 Bit Ripple Counter**
-![image](https://github.com/user-attachments/assets/acc28e50-17e2-4b31-a433-374517bc4867)
+![image](https://github.com/user-attachments/assets/6fa74a24-1311-475c-a213-5f2d7964230f)
+
 
 
 **TIMING DIGRAMS FOR 4 Bit Ripple Counter**
-![image](https://github.com/user-attachments/assets/a7354d65-402a-4b91-b8b6-c2c303459001)
+![image](https://github.com/user-attachments/assets/4fffa0c1-7a79-4e41-8b86-022d7f3ed9e0)
 
 
 **RESULTS**
+
 Thus the given 4 Bit Ripple Counter are implemented using verilog and validated their functionality using functional tables are verified in Quartus II.
 
