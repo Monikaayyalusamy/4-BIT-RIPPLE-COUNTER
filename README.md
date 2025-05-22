@@ -36,30 +36,79 @@ In timing diagram Q0 is changing as soon as the negative edge of clock pulse is 
 ```
 
 **PROGRAM**
-```
-module ex12(out,clk,rst);
-input clk,rst;
-output reg [3:0]out;
-always @ (posedge clk)
-begin
-  if(rst)
-      out<=0;
-   else
-     out<=out-1;
-end
-endmodule
-```
 
  Developed by:Monika.A
  RegisterNumber:212224240094
-*/
+```
+module exp12(
+   input wire clk,  // Clock input
+   output reg [3:0] count // 4-bit counter output
+);
+
+// Counter logic
+always @(posedge clk) begin
+   if (count == 4'b1111) // Reset when count reaches 15
+       count <= 4'b0000;
+   else
+       count <= count + 1; // Increment count
+end
+
+endmodule
+
+// Testbench
+module RippleCounter_tb;
+
+// Inputs
+reg clk;
+
+// Outputs
+wire [3:0] count;
+
+// Instantiate the counter
+RippleCounter uut(
+   .clk(clk),
+   .count(count)
+);
+
+// Clock generation
+initial begin
+   clk = 0;
+   forever #5 clk = ~clk; // Toggle clock every 5 time units
+end
+
+// Stimulus
+initial begin
+   // Wait for a few clock cycles
+   #10;
+   
+   // Display header
+   $display("Time | Count");
+   $display("-----------------");
+   
+   // Functional table testing
+   // Increment count 16 times and display the count
+   repeat (16) begin
+       #5; // Wait for one clock cycle
+       $display("%4d | %b", $time, count);
+   end
+   
+   // End simulation
+   $finish;
+end
+
+endmodule
+
+```
+
 
 **RTL LOGIC FOR 4 Bit Ripple Counter**
+
 ![image](https://github.com/user-attachments/assets/6fa74a24-1311-475c-a213-5f2d7964230f)
 
 
 
 **TIMING DIGRAMS FOR 4 Bit Ripple Counter**
+
 ![image](https://github.com/user-attachments/assets/4fffa0c1-7a79-4e41-8b86-022d7f3ed9e0)
 
 
